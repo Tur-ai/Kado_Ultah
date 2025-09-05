@@ -46,10 +46,33 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* 🎵 Tombol Musik */
+    .music-control {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      background: rgba(233, 30, 99, 0.9);
+      color: white;
+      font-size: 1.5rem;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(233, 30, 99, 0.5);
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .music-control:hover {
+      transform: scale(1.1);
+      background: rgba(233, 30, 99, 1);
+    }
   </style>
 </head>
 <body>
-    <audio id="bgMusic" src="music1.mp3" autoplay loop hidden></audio>
+  <!-- 🎵 Musik -->
+  <audio id="bgMusic" src="music1.mp3" autoplay loop></audio>
+  <div class="music-control" id="musicControl">🔊</div>
+
   <div class="container">
     <h1>Catatan Untukmu</h1>
     <p>Saya tidak tahu cara yang paling tepat untuk menyampaikannya, tetapi saya ingin Anda tahu... jika Anda itu istimewa. Bukan hanya hadir dalam hidupku, tapi kamu punya tempat sendiri di hati ini. Tempat yang tidak bisa sembarang orang duduki, tempat yang bahkan sejak lama sudah kamu miliki-tanpa perlu aku izinkan.</p>
@@ -64,5 +87,22 @@
     <p>Dan jika pada akhirnya kamu membaca ini—entah sekarang atau entah kapan—semoga kamu merasa cukup, semoga kamu tahu bahwa yang membuatmu istimewa adalah kenyataan bahwa sejak awal, kamu sudah menjadi satu-satunya.</p>
     <div class="signature">– Dari seseorang yang selalu menyimpanmu baik-baik</div>
   </div>
+
+  <script>
+    // 🎵 Toggle Musik
+    const music = document.getElementById("bgMusic");
+    const musicControl = document.getElementById("musicControl");
+
+    musicControl.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicControl.textContent = "🔊";
+      } else {
+        music.pause();
+        musicControl.textContent = "🔇";
+      }
+    });
+    alert("Musicnya jangan lupa pencet di sebalah kanan atas, cmiww ")
+  </script>
 </body>
 </html>
