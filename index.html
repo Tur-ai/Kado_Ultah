@@ -1,222 +1,368 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selamat Ulang Tahun Sayang ❤️</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #feca57);
-      background-size: 400% 400%;
-      animation: gradientShift 6s ease infinite;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    .music-control {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #e91e63;
-  color: #fff;
-  font-size: 1.5em;
-  padding: 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: background 0.3s ease;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Sayang ❤️</title>
+    <style>
+        .music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: linear-gradient(45deg, #ff6b9d, #ff8a80);
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.5);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.3s ease;
 }
 .music-control:hover {
-  background: #c2185b;
+    transform: scale(1.1);
 }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      position: relative;
-      padding: 20px;
-    }
+        .pin-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+        }
 
-    .heart {
-      position: absolute;
-      color: #ff1744;
-      font-size: 20px;
-      animation: float 3s ease-in-out infinite;
-      pointer-events: none;
-      opacity: 0.8;
-    }
+        .pin-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideInScale 1s ease-out;
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
-      25% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
-      50% { transform: translateY(-40px) rotate(-5deg); opacity: 0.6; }
-      75% { transform: translateY(-20px) rotate(3deg); opacity: 1; }
-    }
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
 
-    .title {
-      background: linear-gradient(45deg, #ff6b9d, #ffd93d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-size: 3rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 30px;
-      animation: pulse 2s ease-in-out infinite;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
+        .pin-title {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
+        .pin-input {
+            width: 200px;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #ff6b9d;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            outline: none;
+            transition: all 0.3s ease;
+        }
 
-    .message-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 600px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      animation: slideIn 1s ease-out;
-    }
+        .pin-input:focus {
+            border-color: #ff1744;
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+        }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .pin-button {
+            background: linear-gradient(45deg, #ff6b9d, #ff8a80);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
 
-    .message { font-size: 1.2rem; line-height: 1.8; color: #333; margin-bottom: 20px; font-style: italic; }
+        .pin-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.6);
+        }
 
-    .love-button {
-      background: linear-gradient(45deg, #ff6b9d, #ff8a80);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 10px;
-      box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
-    }
+        .pin-error {
+            color: #ff1744;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
 
-    .love-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255, 107, 157, 0.6);
-      animation: bounce 0.6s ease-in-out;
-    }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
 
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(-3px); }
-      40% { transform: translateY(-8px); }
-      60% { transform: translateY(-5px); }
-    }
+        .unlock-success {
+            animation: successPulse 1s ease-in-out;
+        }
 
-    .surprise-box {
-      display: none;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-radius: 15px;
-      padding: 30px;
-      margin: 20px 0;
-      animation: fadeIn 1s ease-in;
-    }
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); background: #4caf50; }
+            100% { transform: scale(1); }
+        }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            padding: 20px;
+        }
 
-    .cake { font-size: 5rem; animation: spin 3s linear infinite; margin: 20px 0; }
+        .heart {
+            position: absolute;
+            color: #ff1744;
+            font-size: 20px;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.8;
+        }
 
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-40px) rotate(-5deg);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translateY(-20px) rotate(3deg);
+                opacity: 1;
+            }
+        }
 
-    .balloon { position: absolute; font-size: 2rem; animation: floatUp 4s ease-in-out infinite; }
+        .title {
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-    @keyframes floatUp { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-30px); } }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
-    .confetti { position: absolute; width: 10px; height: 10px; background: #ff6b9d; animation: confettiFall 3s linear infinite; }
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: slideIn 1s ease-out;
+        }
 
-    @keyframes confettiFall { from { transform: translateY(-100vh) rotate(0deg); opacity: 1; } to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .photo-frame {
-      border: 10px solid #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      margin: 20px 0; overflow: hidden; animation: photoGlow 2s ease-in-out infinite alternate;
-    }
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
 
-    @keyframes photoGlow { from { box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3); } to { box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6); } }
+        .love-button {
+            background: linear-gradient(45deg, #ff6b9d, #ff8a80);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
 
-    .countdown { font-size: 1.5rem; font-weight: bold; color: #ff1744; margin: 20px 0; }
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.6);
+            animation: bounce 0.6s ease-in-out;
+        }
 
-    /* === PIN / LOCK SCREEN === */
-    .pin-overlay {
-      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); padding: 20px; z-index: 9999;
-    }
-    .pin-card {
-      width: 100%; max-width: 420px; background: #fff; border-radius: 18px; padding: 24px 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; border: 2px solid rgba(0,0,0,0.06);
-      transform: scale(1); transition: transform .4s ease;
-    }
-    .unlock-success { transform: scale(0.95); }
-    .pin-title { font-size: 1.25rem; margin-bottom: 12px; }
-    .pin-subtitle { color: #666; font-size: .95rem; margin-bottom: 16px; }
-    .pin-input {
-      width: 100%; font-size: 1.1rem; padding: 12px 14px; border-radius: 10px;
-      border: 2px solid #ffd1e1; outline: none; text-align: center; letter-spacing: 2px;
-    }
-    .pin-input:focus { border-color: #ff6b9d; }
-    .pin-actions { margin-top: 14px; }
-    .pin-button { background: linear-gradient(45deg, #ff6b9d, #ff8a80); color: #fff; border: none; padding: 12px 16px; border-radius: 10px; cursor: pointer; }
-    .pin-error { display: none; color: #c62828; font-weight: bold; margin-top: 10px; }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(-3px); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-5px); }
+        }
 
-    @media (max-width: 768px) {
-      .title { font-size: 2rem; }
-      .message-card { padding: 20px; margin: 10px; }
-      .message { font-size: 1rem; }
-    }
-  </style>
+        .surprise-box {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cake {
+            font-size: 5rem;
+            margin: 20px 0;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 4s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            from {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff1744;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .message-card { padding: 20px; margin: 10px; }
+            .message { font-size: 1rem; }
+            .pin-title { font-size: 2rem; }
+            .pin-input { width: 180px; }
+        }
+    </style>
 </head>
 <body>
-    <audio id="bgMusic" src="Music.mp3" autoplay loop hidden></audio>
+    <!-- Musik Player -->
+<audio id="bgMusic" loop>
+    <source src="Music.mp3">
+</audio>
 
-
-<div class="music-control" id="musicBtn">🎵</div>
-
-
-  <!-- === PIN OVERLAY (Baru) === -->
-  <section id="pinContainer" class="pin-overlay">
-    <div class="pin-card">
-      <h2 class="pin-title">🔒 Kode PIN Ulang Tahun</h2>
-      <p class="pin-subtitle">Masukkan tanggal lahir (DD-MM-YYYY)</p>
-      <input id="pinInput" class="pin-input" type="text" placeholder="contoh: 25-05-2006" maxlength="10" />
-      <div class="pin-actions">
-        <button id="pinSubmit" class="pin-button">Buka 🎁</button>
-      </div>
-      <div id="pinError" class="pin-error">Tanggal lahirnya belum tepat, coba lagi ya ❤️</div>
+<!-- Tombol Musik -->
+<div class="music-control" id="musicControl">
+    🔊
+</div>
+    <!-- PIN Protection Screen -->
+    <div class="pin-container" id="pinContainer">
+        <div class="pin-box">
+            <h1 class="pin-title">🔒 Masukkan Tanggal Lahir 🔒</h1>
+            <p style="color: #666; margin-bottom: 20px;">Format: DD-MM-YYYY</p>
+            <input type="text" id="pinInput" class="pin-input" placeholder="15-08-1995" maxlength="10">
+            <br>
+            <button id="pinSubmit" class="pin-button">🎂 Buka Kejutan! 🎂</button>
+            <div id="pinError" class="pin-error">❌ Tanggal lahir salah! Coba lagi ya sayang 💕</div>
+        </div>
     </div>
-  </section>
 
-  <!-- === KONTEN UTAMA (disembunyikan sampai PIN benar) === -->
-  <main id="mainContainer" style="display:none;">
-    <div class="container">
-      <h1 class="title">🎉 Selamat Ulang Tahun Sayangku! 🎉</h1>
-
-      <div class="message-card">
+    <!-- Main Content -->
+    <div class="container" id="mainContainer">
+        <h1 class="title">🎉 Selamat Ulang Tahun Sayangku! 🎉</h1>
+        
+        <div class="message-card">
     <div class="photo-frame cake">
         <img src="Cinta.jpg" alt="Foto Kamu" style="width:100%; height:auto;">
     </div>
@@ -228,8 +374,7 @@
     <button class="love-button" id="loveBtn1">Klik untuk Kejutan! 💕</button>
 </div>
 
-
-      <div class="surprise-box" id="surprise1">
+        <div class="surprise-box" id="surprise1">
     <h2>💝 Pesan Cinta Untukmu 💝</h2>
     <div class="photo-frame">
         <img src="Foto Dia.jpg" alt="Foto Kenangan" style="width:100%; height:auto;">
@@ -238,7 +383,7 @@
     <button class="love-button" id="loveBtn2">Kejutan Lagi! 🎈</button>
 </div>
 
-      <div class="surprise-box" id="surprise2">
+        <div class="surprise-box" id="surprise2">
     <h2>🌟 Janji Cintaku 🌟</h2>
     <div class="photo-frame">
         <img src="Fotbar.jpg" alt="Foto Spesial" style="width:100%; height:auto;">
@@ -247,8 +392,7 @@
     <button class="love-button" id="loveBtn3">Satu Lagi! 🦄</button>
 </div>
 
-
-      <div class="surprise-box" id="surprise3">
+        <div class="surprise-box" id="surprise3">
     <h2>🎪 Harapan Terindahku 🎪</h2>
     <div class="photo-frame">
         <img src="foto3.jpg" alt="Foto Kenangan Bersama" style="width:100%; height:auto;">
@@ -257,221 +401,308 @@
     <button class="love-button" id="finalBtn">Kejutan Terakhir! 🎆</button>
 </div>
 
-      <div class="surprise-box" id="finalSurprise">
+        <div class="surprise-box" id="finalSurprise">
         <h2>🏰 Cinta Abadi 🏰</h2>
         <div class="countdown" id="countdown"></div>
         <p>"Sudah <span id="daysTogether">0</span> hari kita bersama, dan aku berharap akan ada ribuan hari lagi!. HAPPY BIRTHDAY MY LOVE! 💖🎊"</p><br>
         <p><a href="catatan/catatan.html" target="_blank">Dan Ini catatan Buat kamu</a></p>
       </div>
     </div>
-  </main>
 
-  <script>
-    // Lagu
+    <script>
+        // ===== KONFIGURASI =====
+        const CORRECT_BIRTHDAY = "09-09-2006"; // GANTI TANGGAL LAHIR DISINI!
+        const RELATIONSHIP_START = new Date('07-31-2024'); // GANTI TANGGAL MULAI PACARAN!
+
+        // ===== GLOBAL VARIABLES =====
+        let animationIntervals = [];
+        let isMainActive = false;
+
+        // ===== UTILITY FUNCTIONS =====
+        function createFloatingElement(emoji, className = 'heart') {
+            const element = document.createElement('div');
+            element.className = className;
+            element.innerHTML = emoji;
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.animationDelay = Math.random() * 2 + 's';
+            element.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(element);
+            
+            setTimeout(() => {
+                if (element.parentNode) {
+                    element.remove();
+                }
+            }, 5000);
+        }
+
+        function createHeart() {
+            createFloatingElement('💖', 'heart');
+        }
+
+        function createBalloon() {
+            const balloons = ['🎈', '🎉', '🎊', '💕', '🌟'];
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.innerHTML = balloons[Math.floor(Math.random() * balloons.length)];
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.top = Math.random() * 100 + 'vh';
+            balloon.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(balloon);
+            
+            setTimeout(() => {
+                if (balloon.parentNode) {
+                    balloon.remove();
+                }
+            }, 4000);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = ['#ff6b9d', '#ffd93d', '#6bcf7f', '#45b7d1'][Math.floor(Math.random() * 4)];
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.remove();
+                }
+            }, 3000);
+        }
+
+        function createHeartExplosion(count = 10, delay = 100) {
+            for(let i = 0; i < count; i++) {
+                setTimeout(createHeart, i * delay);
+            }
+        }
+
+        function createBalloonExplosion(count = 8, delay = 150) {
+            for(let i = 0; i < count; i++) {
+                setTimeout(createBalloon, i * delay);
+            }
+        }
+
+        function createConfettiRain(count = 15, delay = 100) {
+            for(let i = 0; i < count; i++) {
+                setTimeout(createConfetti, i * delay);
+            }
+        }
+
+        function createMegaExplosion() {
+            for(let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createHeart();
+                    createConfetti();
+                    createBalloon();
+                }, i * 200);
+            }
+        }
+
+        // ===== PIN FUNCTIONS =====
+        function checkPIN() {
+            const input = document.getElementById('pinInput').value.trim();
+            const errorDiv = document.getElementById('pinError');
+            const pinContainer = document.getElementById('pinContainer');
+            
+            if (input === CORRECT_BIRTHDAY) {
+                // Success animation
+                pinContainer.classList.add('unlock-success');
+                
+                setTimeout(() => {
+                    pinContainer.style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'flex';
+                    isMainActive = true;
+                    
+                    setTimeout(() => {
+                        alert('💖 Selamat datang di website spesial untuk ulang tahunmu, ayang! Klik tombol-tombolnya untuk kejutan!,dan klik logo musik di kiri bawah 💖');
+                    }, 500);
+                    
+                    startMainAnimations();
+                }, 1000);
+                
+            } else {
+                // Error handling
+                errorDiv.style.display = 'block';
+                document.getElementById('pinInput').value = '';
+                document.getElementById('pinInput').focus();
+                
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function formatPinInput(e) {
+            let value = e.target.value.replace(/[^\d]/g, '');
+            
+            if (value.length >= 2) {
+                value = value.substring(0,2) + '-' + value.substring(2);
+            }
+            if (value.length >= 5) {
+                value = value.substring(0,5) + '-' + value.substring(5,9);
+            }
+            
+            e.target.value = value;
+        }
+
+        // ===== MAIN ANIMATION FUNCTIONS =====
+        function startMainAnimations() {
+            // Clear any existing intervals
+            animationIntervals.forEach(interval => clearInterval(interval));
+            animationIntervals = [];
+            
+            // Start new animations
+            animationIntervals.push(setInterval(createHeart, 2000));
+            animationIntervals.push(setInterval(createBalloon, 3000));
+            animationIntervals.push(setInterval(createConfetti, 4000));
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const birthday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const nextYear = birthday.getTime() + 365 * 24 * 60 * 60 * 1000;
+            const timeLeft = nextYear - now.getTime();
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            
+            const countdownEl = document.getElementById('countdown');
+            if (countdownEl) {
+                countdownEl.innerHTML = `Ulang tahun berikutnya dalam: ${days} hari, ${hours} jam, ${minutes} menit! 🎂`;
+            }
+            
+            const daysTogether = Math.floor((now - RELATIONSHIP_START) / (1000 * 60 * 60 * 24));
+            const daysTogetherEl = document.getElementById('daysTogether');
+            if (daysTogetherEl) {
+                daysTogetherEl.innerHTML = daysTogether;
+            }
+        }
+
+        function createClickHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💕';
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = '20px';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'float 2s ease-out forwards';
+            heart.style.zIndex = '1000';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 2000);
+        }
+
+        // ===== EVENT LISTENERS =====
+        function initializeEventListeners() {
+            // PIN Events
+            const pinSubmit = document.getElementById('pinSubmit');
+            const pinInput = document.getElementById('pinInput');
+            
+            if (pinSubmit) {
+                pinSubmit.addEventListener('click', checkPIN);
+            }
+            
+            if (pinInput) {
+                pinInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPIN();
+                    }
+                });
+                
+                pinInput.addEventListener('input', formatPinInput);
+                
+                // Auto focus
+                setTimeout(() => pinInput.focus(), 100);
+            }
+
+            // Surprise Button Events
+            const loveBtn1 = document.getElementById('loveBtn1');
+            if (loveBtn1) {
+                loveBtn1.addEventListener('click', function() {
+                    document.getElementById('surprise1').style.display = 'block';
+                    this.style.display = 'none';
+                    createHeartExplosion();
+                });
+            }
+
+            const loveBtn2 = document.getElementById('loveBtn2');
+            if (loveBtn2) {
+                loveBtn2.addEventListener('click', function() {
+                    document.getElementById('surprise2').style.display = 'block';
+                    this.parentNode.style.display = 'none';
+                    createBalloonExplosion();
+                });
+            }
+
+            const loveBtn3 = document.getElementById('loveBtn3');
+            if (loveBtn3) {
+                loveBtn3.addEventListener('click', function() {
+                    document.getElementById('surprise3').style.display = 'block';
+                    this.parentNode.style.display = 'none';
+                    createConfettiRain();
+                });
+            }
+
+            const finalBtn = document.getElementById('finalBtn');
+            if (finalBtn) {
+                finalBtn.addEventListener('click', function() {
+                    document.getElementById('finalSurprise').style.display = 'block';
+                    this.parentNode.style.display = 'none';
+                    createMegaExplosion();
+                    updateCountdown();
+                });
+            }
+
+            // Click anywhere for hearts (only when main is active)
+            document.addEventListener('click', function(e) {
+                if (isMainActive && 
+                    !e.target.classList.contains('love-button') && 
+                    !e.target.classList.contains('pin-button') && 
+                    !e.target.closest('.music-control') &&
+                    e.target.id !== 'pinInput') {
+                    
+                    createClickHeart(e.clientX, e.clientY);
+                }
+            });
+
+            // Music Control Event
+            const musicControl = document.getElementById('musicControl');
+            if (musicControl) {
+                musicControl.addEventListener('click', toggleMusic);
+            }
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            animationIntervals.forEach(interval => clearInterval(interval));
+        });
+
+        // ===== MUSIC FUNCTIONS =====
+function toggleMusic() {
     const music = document.getElementById('bgMusic');
-  const btn = document.getElementById('musicBtn');
-  let isPlaying = false;
+    const musicControl = document.getElementById('musicControl');
 
-  btn.addEventListener('click', () => {
-    if (isPlaying) {
-      music.pause();
-      isPlaying = false;
-      btn.textContent = '🎵 OFF'; 
+    if (music.paused) {
+        music.play();
+        musicControl.textContent = "🔊"; // icon saat nyala
     } else {
-      music.play();
-      isPlaying = true;
-      btn.textContent = '🎵 ON'; 
+        music.pause();
+        musicControl.textContent = "🔇"; // icon saat mati
     }
-  });
+}
 
-    // ===== KONFIGURASI =====
-    // Tanggal lahir untuk PIN (format: DD-MM-YYYY)
-    const CORRECT_BIRTHDAY = "09-09-2006"; // <-- Ubah di sini
-    // Tanggal mulai jadian (format: YYYY-MM-DD)
-    const RELATIONSHIP_START = "2024-07-31"; // <-- Ubah di sini
-
-    // ===== UTIL =====
-    function parseBirthday(ddmmyyyy) {
-      const [dd, mm, yyyy] = ddmmyyyy.split("-").map(Number);
-      return { dd, mm, yyyy };
-    }
-
-    function nextBirthdayFrom(birthdayStr, now = new Date()) {
-      const { dd, mm } = parseBirthday(birthdayStr);
-      // JS month index 0-11, so mm-1
-      let next = new Date(now.getFullYear(), mm - 1, dd);
-      if (next < new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-        next = new Date(now.getFullYear() + 1, mm - 1, dd);
-      }
-      return next;
-    }
-
-    function humanCountdown(toDate, fromDate = new Date()) {
-      const diff = toDate - fromDate;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      return { days, hours, minutes };
-    }
-
-    // ===== PIN LOGIC =====
-    function checkPIN() {
-      const inputEl = document.getElementById('pinInput');
-      const val = (inputEl.value || '').trim();
-      const errorDiv = document.getElementById('pinError');
-
-      if (val === CORRECT_BIRTHDAY) {
-        const card = document.querySelector('#pinContainer .pin-card');
-        card.classList.add('unlock-success');
-        setTimeout(() => {
-          document.getElementById('pinContainer').style.display = 'none';
-          document.getElementById('mainContainer').style.display = 'block';
-          setTimeout(() => {
-            alert('💖 Selamat datang di website spesial untuk ulang tahunmu, sayang! Klik tombol-tombolnya untuk kejutan! 💖');
-          }, 300);
-          startMainAnimations();
-        }, 600);
-      } else {
-        errorDiv.style.display = 'block';
-        inputEl.value = '';
-        inputEl.focus();
-        setTimeout(() => { errorDiv.style.display = 'none'; }, 2000);
-      }
-    }
-
-    // Format input otomatis DD-MM-YYYY
-    function formatPINInput(e) {
-      let v = e.target.value.replace(/[^\d]/g, '');
-      if (v.length > 2) v = v.slice(0,2) + '-' + v.slice(2);
-      if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,9);
-      e.target.value = v.slice(0,10);
-    }
-
-    // ===== ANIMASI UTAMA =====
-    function startMainAnimations() {
-      setInterval(createHeart, 2000);
-      setInterval(createBalloon, 3000);
-      setInterval(createConfetti, 4000);
-    }
-
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '💖';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = Math.random() * 2 + 's';
-      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
-
-    function createBalloon() {
-      const balloon = document.createElement('div');
-      balloon.className = 'balloon';
-      const icons = ['🎈', '🎉', '🎊', '💕', '🌟'];
-      balloon.textContent = icons[Math.floor(Math.random() * icons.length)];
-      balloon.style.left = Math.random() * 100 + 'vw';
-      balloon.style.top = Math.random() * 100 + 'vh';
-      balloon.style.animationDelay = Math.random() * 2 + 's';
-      document.body.appendChild(balloon);
-      setTimeout(() => balloon.remove(), 4000);
-    }
-
-    // === (BARU) Fungsi confetti yang sebelumnya hilang ===
-    function createConfetti() {
-      const c = document.createElement('div');
-      c.className = 'confetti';
-      c.style.left = Math.random() * 100 + 'vw';
-      c.style.top = '-20px';
-      c.style.background = ['#ff6b9d', '#ffd93d', '#6bcf7f', '#4ecdc4', '#45b7d1'][Math.floor(Math.random()*5)];
-      c.style.width = (Math.random() * 8 + 4) + 'px';
-      c.style.height = (Math.random() * 8 + 4) + 'px';
-      c.style.animationDuration = (Math.random() * 2 + 2) + 's';
-      document.body.appendChild(c);
-      setTimeout(() => c.remove(), 4000);
-    }
-
-    // ===== KEJUTAN BUTTONS =====
-    function initSurpriseButtons() {
-      const btn1 = document.getElementById('loveBtn1');
-      const btn2 = document.getElementById('loveBtn2');
-      const btn3 = document.getElementById('loveBtn3');
-      const finalBtn = document.getElementById('finalBtn');
-
-      if (btn1) btn1.addEventListener('click', () => {
-        document.getElementById('surprise1').style.display = 'block';
-        btn1.style.display = 'none';
-        for (let i = 0; i < 10; i++) setTimeout(createHeart, i * 100);
-      });
-
-      if (btn2) btn2.addEventListener('click', () => {
-        document.getElementById('surprise2').style.display = 'block';
-        document.getElementById('surprise1').style.display = 'none';
-        for (let i = 0; i < 8; i++) setTimeout(createBalloon, i * 150);
-      });
-
-      if (btn3) btn3.addEventListener('click', () => {
-        document.getElementById('surprise3').style.display = 'block';
-        document.getElementById('surprise2').style.display = 'none';
-        for (let i = 0; i < 15; i++) setTimeout(createConfetti, i * 100);
-      });
-
-      if (finalBtn) finalBtn.addEventListener('click', () => {
-        document.getElementById('finalSurprise').style.display = 'block';
-        document.getElementById('surprise3').style.display = 'none';
-        for (let i = 0; i < 20; i++) setTimeout(() => { createHeart(); createConfetti(); createBalloon(); }, i * 200);
-        updateCountdown();
-      });
-    }
-
-    function updateCountdown() {
-      const now = new Date();
-      const next = nextBirthdayFrom(CORRECT_BIRTHDAY, now);
-      const { days, hours, minutes } = humanCountdown(next, now);
-      const cd = document.getElementById('countdown');
-      if (cd) cd.textContent = `Ulang tahun berikutnya dalam: ${days} hari, ${hours} jam, ${minutes} menit! 🎂`;
-
-      const startDate = new Date(RELATIONSHIP_START);
-      const daysTogether = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-      const dt = document.getElementById('daysTogether');
-      if (dt) dt.textContent = daysTogether;
-    }
-
-    // Efek klik di mana saja (aktif setelah unlock)
-    function initGlobalClickHearts() {
-      document.addEventListener('click', function (e) {
-        const main = document.getElementById('mainContainer');
-        if (!main || main.style.display === 'none') return;
-        if (e.target.classList.contains('love-button') || e.target.classList.contains('pin-button') || e.target.id === 'pinInput') return;
-        const heart = document.createElement('div');
-        heart.textContent = '💕';
-        heart.style.position = 'fixed';
-        heart.style.left = e.clientX + 'px';
-        heart.style.top = e.clientY + 'px';
-        heart.style.fontSize = '20px';
-        heart.style.pointerEvents = 'none';
-        heart.style.animation = 'float 2s ease-out forwards';
-        heart.style.zIndex = '1000';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 2000);
-      });
-    }
-
-    // ==== INIT ====
-    document.addEventListener('DOMContentLoaded', () => {
-      // PIN events
-      const pinSubmit = document.getElementById('pinSubmit');
-      const pinInput = document.getElementById('pinInput');
-      if (pinSubmit) pinSubmit.addEventListener('click', checkPIN);
-      if (pinInput) {
-        pinInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') checkPIN(); });
-        pinInput.addEventListener('input', formatPINInput);
-        pinInput.focus();
-      }
-
-      initSurpriseButtons();
-      initGlobalClickHearts();
-    });
-  </script>
+    </script>
 </body>
 </html>
