@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Catatan Untukmu</title>
+  <title>Kata-Kata</title>
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -69,11 +69,20 @@
   </style>
 </head>
 <body>
-  <!-- 🎵 Musik -->
-  <audio id="bgMusic" src="music1.mp3" autoplay loop></audio>
-  <div class="music-control" id="musicControl">🔊</div>
-
   <div class="container">
+    <h1>Puisi: "Untukmu"</h1>
+    <p>Di matamu, aku menemukan rumah,
+tempat segala resah berlabuh,
+tempat segala sunyi berubah,
+menjadi hangat yang tak pernah luluh.</p>
+<p>Cintaku padamu bukan sekadar kata,
+ia tumbuh di tiap detak,
+menyelinap dalam doa-doa sederhana,
+dan bersemi di tiap langkah.</p>
+<p>Jika waktu bertanya sampai kapan,
+maka jawabku hanyalah satu:
+selama nafasku masih tersisa,
+aku memilih mencintaimu.</p>
     <h1>Hal Termudah Adalah Mencintaimu</h1>
     <p>Jatuh cinta kepadamu adalah hal termudah yang pernah kulakukan. Tidak ada yang penting bagiku kecuali dirimu, dan setiap aku hidup aku menyadari hal ini. Aku mencintaimu sejak saat itu, aku mencintai hari ini, dan aku akan mencintaimu sepanjang yang aku bisa.</p>
     <h1>Lautan Aksara</h1>
@@ -90,25 +99,8 @@
     <p>Semerbak rintih, seutas tangis, aku menjelma jadi rasa. Aku hampa, aku ingin peluk, aku ingin menangis. Mengais kesenangan kemarin dan menumpuknya untuk hari ini.</p>
     <h1>From My Universe</h1>
     <p>Kota ini terlalu riuh untuk sebuah sunyi yang kutanggung sendirian. Dan hujan, entah mengapa, kini beraroma seperti percakapan kita yang penuh harapan.</p>
+    <p><a href="/catatan/catatan.html" style="color: black;">Klik Ini Ada Catatan Buat Kamu</a></p>
     <div class="signature">– Dari seseorang yang selalu menyimpanmu baik-baik</div>
-    <a href="/catatan/catatan.html" target="_blank" style="color: white;">Nih Ada Catatan Buat Kamu</a>
   </div>
-
-  <script>
-    // 🎵 Toggle Musik
-    const music = document.getElementById("bgMusic");
-    const musicControl = document.getElementById("musicControl");
-
-    musicControl.addEventListener("click", () => {
-      if (music.paused) {
-        music.play();
-        musicControl.textContent = "🔊";
-      } else {
-        music.pause();
-        musicControl.textContent = "🔇";
-      }
-    });
-    alert("Musicnya jangan lupa pencet di sebalah kanan atas, cmiww ")
-  </script>
 </body>
 </html>
