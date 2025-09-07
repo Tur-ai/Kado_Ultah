@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Catatan Untukmu</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    h1 {
+      font-size: 2.2em;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.8em;
+      text-align: justify;
+      margin-bottom: 15px;
+    }
+    .signature {
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #555;
+      text-align: right;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🎵 Tombol Musik */
+    .music-control {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      background: rgba(233, 30, 99, 0.9);
+      color: white;
+      font-size: 1.5rem;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(233, 30, 99, 0.5);
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .music-control:hover {
+      transform: scale(1.1);
+      background: rgba(233, 30, 99, 1);
+    }
+  </style>
+</head>
+<body>
+  <!-- 🎵 Musik -->
+  <audio id="bgMusic" src="music1.mp3" autoplay loop></audio>
+  <div class="music-control" id="musicControl">🔊</div>
+
+  <div class="container">
+    <h1>Hal Termudah Adalah Mencintaimu</h1>
+    <p>Jatuh cinta kepadamu adalah hal termudah yang pernah kulakukan. Tidak ada yang penting bagiku kecuali dirimu, dan setiap aku hidup aku menyadari hal ini. Aku mencintaimu sejak saat itu, aku mencintai hari ini, dan aku akan mencintaimu sepanjang yang aku bisa.</p>
+    <h1>Lautan Aksara</h1>
+    <p>Mari berkelana pada lautan aksara atma tanpa raga dan tanpa batas semesta</p>
+    <h1>Didalam Sastra Indoneisa (Jurusan yang kamu pilih dengan sepenuh hati)</h1>
+    <p>Karena di setiap untaian kata yang di jelaskan wawasanmu tak pernah gagal membuatku kagum lagi, lagi dan lagi</p>
+    <h1>Kisah Cinta Aku Kalo Dari Novel</h1>
+    <p>Dan pada akhirnya, aku dan kamu—kita berada di bawah atap rumah yang sama.</p>
+    <p>Bukan sekadar tempat berlindung dari hujan dan panas, tapi ruang di mana cinta kita tumbuh, menyatu dalam tawa, air mata, dan doa yang tak pernah putus</p>
+    <p>Tak lagi tentang aku atau kamu, melainkan kita—yang saling memilih,setiap hari, dalam sunyi maupun ramai.</p>
+    <p>Kita telah melewati jalan panjang, penuh liku, penuh harap.</p>
+    <p>Dan kini, di tempat ini,aku tahu: rumahku adalah kamu.</p>
+    <h1>Kondisi Aku Untuk Saat Ini</h1>
+    <p>Semerbak rintih, seutas tangis, aku menjelma jadi rasa. Aku hampa, aku ingin peluk, aku ingin menangis. Mengais kesenangan kemarin dan menumpuknya untuk hari ini.</p>
+    <h1>From My Universe</h1>
+    <p>Kota ini terlalu riuh untuk sebuah sunyi yang kutanggung sendirian. Dan hujan, entah mengapa, kini beraroma seperti percakapan kita yang penuh harapan.</p>
+    <div class="signature">– Dari seseorang yang selalu menyimpanmu baik-baik</div>
+    <a href="/catatan/catatan.html" target="_blank" style="color: white;">Nih Ada Catatan Buat Kamu</a>
+  </div>
+
+  <script>
+    // 🎵 Toggle Musik
+    const music = document.getElementById("bgMusic");
+    const musicControl = document.getElementById("musicControl");
+
+    musicControl.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicControl.textContent = "🔊";
+      } else {
+        music.pause();
+        musicControl.textContent = "🔇";
+      }
+    });
+    alert("Musicnya jangan lupa pencet di sebalah kanan atas, cmiww ")
+  </script>
+</body>
+</html>
